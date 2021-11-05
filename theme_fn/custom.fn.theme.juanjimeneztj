@@ -1,0 +1,486 @@
+<?php
+// Functions to custom options in the theme
+function juanjimeneztj_customize_register($wp_customize){
+    
+    /**
+	 * Primary color.
+	 */
+    $wp_customize->add_section('gsweb_juanjimeneztj_colors', array(
+        'title' => __('Theme colors', 'chartexperts'),
+        'priority' => 1,
+        'description' => 'Apply a custom color for buttons, links, featured images, etc.',
+    ));
+
+	// Add primary color hue setting and control.
+    $wp_customize->add_setting('gsweb_juanjimeneztj_colors_primary', array(
+		'transport' => 'refresh',
+		'default'   => '#4eb74b',
+		'sanitize_callback' => 'sanitize_hex_color',
+    ));
+    
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'gsweb_juanjimeneztj_colors_primary',
+            array(
+                'label'          => __( 'Primary Color:', 'chartexperts' ),
+                'section'        => 'gsweb_juanjimeneztj_colors',
+				'priority' => 1,
+            )
+        )
+    );
+
+    // Add primary hover color hue setting and control.
+	$wp_customize->add_setting('gsweb_juanjimeneztj_colors_primary_hover', array(
+		'transport' => 'refresh',
+		'default'   => '#33a32f',
+		'sanitize_callback' => 'sanitize_hex_color',
+    ));
+    
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'gsweb_juanjimeneztj_colors_primary_hover',
+            array(
+                'label'          => __( 'Primary Hover Color:', 'chartexperts' ),
+                'section'        => 'gsweb_juanjimeneztj_colors',
+				'priority' => 1,
+            )
+        )
+    );
+
+    // Add secondary color hue setting and control.
+	$wp_customize->add_setting('gsweb_juanjimeneztj_colors_secondary', array(
+		'transport' => 'refresh',
+		'default'   => '#363434',
+		'sanitize_callback' => 'sanitize_hex_color',
+    ));
+    
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'gsweb_juanjimeneztj_colors_secondary',
+            array(
+                'label'          => __( 'Secondary Color:', 'chartexperts' ),
+                'section'        => 'gsweb_juanjimeneztj_colors',
+				'priority' => 1,
+            )
+        )
+    );
+
+    // Add background color hue setting and control.
+	$wp_customize->add_setting('gsweb_juanjimeneztj_colors_bg', array(
+		'transport' => 'refresh',
+		'default'   => '#dee2e6',
+		'sanitize_callback' => 'sanitize_hex_color',
+    ));
+    
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'gsweb_juanjimeneztj_colors_bg',
+            array(
+                'label'          => __( 'Background Color:', 'chartexperts' ),
+                'section'        => 'gsweb_juanjimeneztj_colors',
+				'priority' => 1,
+            )
+        )
+    );
+
+    // Add header background color hue setting and control.
+	$wp_customize->add_setting('gsweb_juanjimeneztj_colors_header_bg', array(
+		'transport' => 'refresh',
+		'default'   => '#363434',
+		'sanitize_callback' => 'sanitize_hex_color',
+    ));
+    
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'gsweb_juanjimeneztj_colors_header_bg',
+            array(
+                'label'          => __( 'Header Background Color:', 'chartexperts' ),
+                'section'        => 'gsweb_juanjimeneztj_colors',
+				'priority' => 1,
+            )
+        )
+    );
+
+    // Add header border color hue setting and control.
+	$wp_customize->add_setting('gsweb_juanjimeneztj_colors_header_bottom_border', array(
+		'transport' => 'refresh',
+		'default'   => '#6c757d',
+		'sanitize_callback' => 'sanitize_hex_color',
+    ));
+    
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'gsweb_juanjimeneztj_colors_header_bottom_border',
+            array(
+                'label'          => __( 'Header bottom border Color:', 'chartexperts' ),
+                'section'        => 'gsweb_juanjimeneztj_colors',
+				'priority' => 1,
+            )
+        )
+    );
+
+    // Add header links color hue setting and control.
+	$wp_customize->add_setting('gsweb_juanjimeneztj_colors_header_links', array(
+		'transport' => 'refresh',
+		'default'   => '#ffffff',
+		'sanitize_callback' => 'sanitize_hex_color',
+    ));
+    
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'gsweb_juanjimeneztj_colors_header_links',
+            array(
+                'label'          => __( 'Header links Color:', 'chartexperts' ),
+                'section'        => 'gsweb_juanjimeneztj_colors',
+				'priority' => 1,
+            )
+        )
+    );
+
+    // Add header links hover color hue setting and control.
+	$wp_customize->add_setting('gsweb_juanjimeneztj_colors_header_links_hover', array(
+		'transport' => 'refresh',
+		'default'   => '#ffffff',
+		'sanitize_callback' => 'sanitize_hex_color',
+    ));
+    
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'gsweb_juanjimeneztj_colors_header_links_hover',
+            array(
+                'label'          => __( 'Header links Hover Color:', 'chartexperts' ),
+                'section'        => 'gsweb_juanjimeneztj_colors',
+				'priority' => 1,
+            )
+        )
+    );
+
+    // Add header links border color hue setting and control.
+	$wp_customize->add_setting('gsweb_juanjimeneztj_colors_header_links_border', array(
+		'transport' => 'refresh',
+		'default'   => '#ffffff',
+		'sanitize_callback' => 'sanitize_hex_color',
+    ));
+    
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'gsweb_juanjimeneztj_colors_header_links_border',
+            array(
+                'label'          => __( 'Header links Border Color:', 'chartexperts' ),
+                'section'        => 'gsweb_juanjimeneztj_colors',
+				'priority' => 1,
+            )
+        )
+    );
+
+    // Add Footer background color hue setting and control.
+	$wp_customize->add_setting('gsweb_juanjimeneztj_colors_footer', array(
+		'transport' => 'refresh',
+		'default'   => '#363434',
+		'sanitize_callback' => 'sanitize_hex_color',
+    ));
+    
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'gsweb_juanjimeneztj_colors_footer',
+            array(
+                'label'          => __( 'Footer Background Color:', 'chartexperts' ),
+                'section'        => 'gsweb_juanjimeneztj_colors',
+				'priority' => 1,
+            )
+        )
+    );
+
+    // Add Footer text color hue setting and control.
+	$wp_customize->add_setting('gsweb_juanjimeneztj_colors_footer_text', array(
+		'transport' => 'refresh',
+		'default'   => '#ffffff',
+		'sanitize_callback' => 'sanitize_hex_color',
+    ));
+    
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'gsweb_juanjimeneztj_colors_footer_text',
+            array(
+                'label'          => __( 'Footer Text Color:', 'chartexperts' ),
+                'section'        => 'gsweb_juanjimeneztj_colors',
+				'priority' => 1,
+            )
+        )
+    );
+
+    // Add Footer links hover color hue setting and control.
+	$wp_customize->add_setting('gsweb_juanjimeneztj_colors_footer_links_hover', array(
+		'transport' => 'refresh',
+		'default'   => '#ffffff',
+		'sanitize_callback' => 'sanitize_hex_color',
+    ));
+    
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'gsweb_juanjimeneztj_colors_footer_links_hover',
+            array(
+                'label'          => __( 'Footer Links Hover Color:', 'chartexperts' ),
+                'section'        => 'gsweb_juanjimeneztj_colors',
+				'priority' => 1,
+            )
+        )
+    );
+
+
+
+    // 
+    
+    $wp_customize->add_section('gsweb_juanjimeneztj_stock', array(
+        'title' => __('Tickers Stocks', 'chartexperts'),
+        'priority' => 2,
+        'description' => 'If you want the bar with the stock values ​​to be displayed, you can select to show, even if you want to customize the values ​​to show you can enter the chosen values ​​in the box.
+        
+        <br /> <br />Example:
+        <br />
+        {<br />
+        "proName": "FOREXCOM:SPXUSD",<br />
+        "title": "S&P 500"<br />
+        },<br />
+        {<br />
+        "proName": "FOREXCOM:NSXUSD",<br />
+        "title": "Nasdaq 100"<br />
+        }<br />
+        <br />
+        More info:<br />
+        <a href="https://es.tradingview.com/widget/ticker-tape/" target="_blank">https://es.tradingview.com/widget/ticker-tape/ </a>
+        ',
+    ));
+
+    $wp_customize->add_setting('gsweb_juanjimeneztj_stock_header', array(
+        'transport' => 'refresh',
+    ));
+
+    $wp_customize->add_control(
+        new WP_Customize_Control(
+            $wp_customize,
+            'gsweb_juanjimeneztj_stock_header',
+            array(
+                'label'          => __( 'Display stocks below of the header.', 'chartexperts' ),
+                'section'        => 'gsweb_juanjimeneztj_stock',
+                'type'           => 'checkbox'
+            )
+        )
+    );
+
+    $wp_customize->add_setting('gsweb_juanjimeneztj_stock_header_symbols', array(
+        'transport' => 'refresh',
+    ));
+
+    $wp_customize->add_control(
+        new WP_Customize_Control(
+            $wp_customize,
+            'gsweb_juanjimeneztj_stock_header_symbols',
+            array(
+                'label'          => __( 'Enter here the symbols:', 'chartexperts' ),
+                'section'        => 'gsweb_juanjimeneztj_stock',
+                'type'           => 'textarea'
+            )
+        )
+    );
+
+    $wp_customize->add_section('gsweb_juanjimeneztj_footer', array(
+        'title' => __('Footer Custom', 'chartexperts'),
+        'priority' => 2,
+        'description' => 'In this section you can customize the footer parameters, you can copy the default parameters to be based on them.<br><br>
+        <em><b>If you don&#39;t choose an image for the logo in the footer section, by default the system will use the same site logo.</b></em>
+        ',
+    ));
+
+    $wp_customize->add_setting('gsweb_juanjimeneztj_footer_logo', array(
+        'transport' => 'refresh',
+    ));
+
+    $wp_customize->add_control( 
+        new WP_Customize_Image_Control( 
+            $wp_customize, 
+            'gsweb_juanjimeneztj_footer_logo', 
+            array(
+                'label'             => __('Logo Footer:', 'chartexperts'),
+                'section'           => 'gsweb_juanjimeneztj_footer',
+                'settings'          => 'gsweb_juanjimeneztj_footer_logo',
+            )
+        )
+    );
+
+    $wp_customize->add_setting('gsweb_juanjimeneztj_footer_company', array(
+        'transport' => 'refresh',
+    ));
+
+    $wp_customize->add_control(
+        new WP_Customize_Control(
+            $wp_customize,
+            'gsweb_juanjimeneztj_footer_company',
+            array(
+                'label'          => __( 'Company name:', 'chartexperts' ),
+                'section'        => 'gsweb_juanjimeneztj_footer',
+                'type'           => 'text'
+            )
+        )
+    );
+
+    $wp_customize->add_setting('gsweb_juanjimeneztj_footer_disclaimer', array(
+        'transport' => 'refresh',
+    ));
+
+    $wp_customize->add_control(
+        new WP_Customize_Control(
+            $wp_customize,
+            'gsweb_juanjimeneztj_footer_disclaimer',
+            array(
+                'label'          => __( 'Disclaimer:', 'chartexperts' ),
+                'section'        => 'gsweb_juanjimeneztj_footer',
+                'type'           => 'textarea'
+            )
+        )
+    );
+
+    $wp_customize->add_section('gsweb_juanjimeneztj_top_navbar', array(
+        'title' => __('Top Navbar', 'chartexperts'),
+        'priority' => 1,
+        'description' => 'If you want a message to be displayed on the top of the site, you can configure the message and its parameters in this section.',
+    ));
+    
+    $wp_customize->add_setting('gsweb_juanjimeneztj_top_navbar_text_title', array(
+        'transport' => 'refresh',
+    ));
+    
+    $wp_customize->add_control(
+        new WP_Customize_Control(
+            $wp_customize,
+            'gsweb_juanjimeneztj_top_navbar_text_title',
+            array(
+                'label'          => __( 'Information to display on top of the page:', 'chartexperts' ),
+                'section'        => 'gsweb_juanjimeneztj_top_navbar',
+                'type'           => 'text'
+            )
+        )
+    );
+	
+	$wp_customize->add_setting('gsweb_juanjimeneztj_top_navbar_text_btn', array(
+        'transport' => 'refresh',
+    ));
+    
+    $wp_customize->add_control(
+        new WP_Customize_Control(
+            $wp_customize,
+            'gsweb_juanjimeneztj_top_navbar_text_btn',
+            array(
+                'label'          => __( 'Button Text:', 'chartexperts' ),
+                'section'        => 'gsweb_juanjimeneztj_top_navbar',
+                'type'           => 'text'
+            )
+        )
+	);
+	
+	$wp_customize->add_setting('gsweb_juanjimeneztj_top_navbar_text_url', array(
+        'transport' => 'refresh',
+    ));
+    
+    $wp_customize->add_control(
+        new WP_Customize_Control(
+            $wp_customize,
+            'gsweb_juanjimeneztj_top_navbar_text_url',
+            array(
+                'label'          => __( 'Button URL:', 'chartexperts' ),
+                'section'        => 'gsweb_juanjimeneztj_top_navbar',
+                'type'           => 'text'
+            )
+        )
+    );
+	
+	$wp_customize->add_setting('gsweb_juanjimeneztj_top_navbar_text_color', array(
+		'transport' => 'refresh',
+		'default'   => '#ffffff',
+		'sanitize_callback' => 'sanitize_hex_color',
+    ));
+    
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'gsweb_juanjimeneztj_top_navbar_text_color',
+            array(
+                'label'          => __( 'Button Text Color:', 'chartexperts' ),
+                'section'        => 'gsweb_juanjimeneztj_top_navbar',
+				'priority' => 1,
+            )
+        )
+	);
+	
+	$wp_customize->add_setting('gsweb_juanjimeneztj_top_navbar_text_nav_color', array(
+		'transport' => 'refresh',
+		'default'   => '#fa0000',
+		'sanitize_callback' => 'sanitize_hex_color',
+    ));
+    
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'gsweb_juanjimeneztj_top_navbar_text_nav_color',
+            array(
+                'label'          => __( 'Navbar Background Color:', 'chartexperts' ),
+                'section'        => 'gsweb_juanjimeneztj_top_navbar',
+				'priority' => 1,
+            )
+        )
+    );
+    
+}
+
+add_action('customize_register', 'juanjimeneztj_customize_register');
+
+function traderplanet_colors_css_wrap() {	
+    $primary_color = get_theme_mod( 'gsweb_juanjimeneztj_colors_primary' );
+    $primary_hover_color = get_theme_mod( 'gsweb_juanjimeneztj_colors_primary_hover' );
+    $secondary_color = get_theme_mod( 'gsweb_juanjimeneztj_colors_secondary' );
+    $bg_color = get_theme_mod( 'gsweb_juanjimeneztj_colors_bg' );
+    $header_bg_color = get_theme_mod( 'gsweb_juanjimeneztj_colors_header_bg' );
+    $header_border_color = get_theme_mod( 'gsweb_juanjimeneztj_colors_header_bottom_border' );
+    $header_links_color = get_theme_mod( 'gsweb_juanjimeneztj_colors_header_links' );
+    $header_links_hover_color = get_theme_mod( 'gsweb_juanjimeneztj_colors_header_links_hover' );
+    $header_links_border_color = get_theme_mod( 'gsweb_juanjimeneztj_colors_header_links_border' );
+    $footer_bg_color = get_theme_mod( 'gsweb_juanjimeneztj_colors_footer' );
+    $footer_text_color = get_theme_mod( 'gsweb_juanjimeneztj_colors_footer_text' );
+    $footer_link_hover_color = get_theme_mod( 'gsweb_juanjimeneztj_colors_footer_links_hover' );
+	
+	?>
+	<style type="text/css" id="custom-theme-colors">
+        :root {
+            --primary: <?= $primary_color ?>;
+            --primary-alternate: <?= $primary_hover_color ?>;
+            --secondary: <?= $secondary_color ?>;
+            --bg-color: <?= $bg_color ?>;
+    
+            --header-bg-color: <?= $header_bg_color ?>;
+            --header-border-color: <?= $header_border_color ?>;
+            --header-links: <?= $header_links_color ?>;
+            --header-links-hover: <?= $header_links_hover_color ?>;
+            --header-links-border: <?= $header_links_border_color ?>;
+
+            --footer-bg-color: <?= $footer_bg_color ?>;
+            --footer-text: <?= $footer_text_color ?>;
+            --footer-links: <?= $footer_text_color ?>;
+            --footer-links-hover: <?= $footer_link_hover_color ?>;
+
+        }
+	</style>
+	<?php
+}
+add_action( 'wp_head', 'traderplanet_colors_css_wrap' );
